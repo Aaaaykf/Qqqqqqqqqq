@@ -1368,7 +1368,7 @@ client.on("message", message => {
 
 ////////////
 
-bot.on("message", async message => {
+client.on("message", async message => {
   if (message.author.bot) return undefined;
   if (message.content.startsWith(prefix + "roleinfo")) {
     let role1 = message.content
@@ -1404,7 +1404,7 @@ bot.on("message", async message => {
 
 
 
-bot.on('message', function(message){
+client.on('message', function(message){
     if(message.content.toLowerCase().includes("dagem")) {
         message.delete();
 let embed = new Discord.RichEmbed()
@@ -1420,41 +1420,9 @@ let embed = new Discord.RichEmbed()
   
     
 
-});
+})
 
 //////////
-
-client.on("message", async message => {
-  const request = require("request");
-  let args = message.content.split(/[ ]+/);
-  let word = args.slice(1).join(" ");
-
-  if (message.content.startsWith(prefix + "gif")) {
-    try {
-      if (!word) return message.reply("You need to give something to search");
-
-      request(
-        {
-          url:
-            "https://api.tenor.com/v1/search?q=" +
-            word +
-            "&key=5THPJ661F87H&limit=1",
-          json: true
-        },
-        async (req, res, json) => {
-          let embed = new Discord.RichEmbed()
-            .setFooter("MADE BY Тигр#0080")
-            .setImage(json.results[0].media[0].gif.url)
-            .setColor("BLUE");
-
-          message.channel.send(embed);
-        }
-      );
-    } catch (err) {
-      message.channel.send("There was an error!\n" + err).catch();
-    }
-  }
-})
 
 
 
