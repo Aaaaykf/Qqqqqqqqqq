@@ -1364,65 +1364,9 @@ client.on("message", message => {
       .setFooter(`By ${message.author.tag}`);
     message.channel.send(embed);
   }
-});
-
-////////////
-
-client.on("message", async message => {
-  if (message.author.bot) return undefined;
-  if (message.content.startsWith(prefix + "roleinfo")) {
-    let role1 = message.content
-      .split(" ")
-      .slice(1)
-      .join(" ");
-    let role =
-      message.guild.roles.find("name", role1) || message.guild.roles.get(role1);
-    if (!role1)
-      return message.channel.send(
-        `**:x: | Error , Please Type Command True Ex : \`${prefix}roleinfo [RoleName]\`**`
-      );
-    if (!role)
-      return message.channel.send("**:x: | Error , I Can't Find This Role**");
-    let roleinfo = new Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .setColor("black")
-      .addField("❯ Role Name", `» \`${role.name}\``, true)
-      .addField("❯ Role ID", `» \`${role.id}\``, true)
-      .addField("❯ Role Color", `» \`${role.hexColor}\``, true)
-      .addField(
-        "❯ Role CreateAt",
-        `» \`${role.createdAt.toLocaleString()}\``,
-        true
-      )
-      .setThumbnail(message.guild.iconURL)
-      .setFooter(bot.user.username, bot.user.avatarURL)
-      .setTimestamp();
-    message.channel.send(roleinfo);
-  }
-});
-////////////
-
-
-
-client.on('message', function(message){
-    if(message.content.toLowerCase().includes("dagem")) {
-        message.delete();
-let embed = new Discord.RichEmbed()
-
-      .setColor("GREEN")
-
-      .setTitle("tkaya jwen maya")
-
-    
-
-    message.author.sendEmbed(embed);    }
- 
-  
-    
-
 })
 
-//////////
+////////////
 
 
 
