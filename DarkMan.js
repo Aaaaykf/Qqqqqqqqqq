@@ -1454,70 +1454,11 @@ client.on("message", async message => {
       message.channel.send("There was an error!\n" + err).catch();
     }
   }
-});
-
-
-
-
-
-const Timers = new Map();
-
-client.on("message", message => {
-if(message.content.startsWith(prefix + "timer")){
-
-  let args = message.content.split(" ")
-
-
-if (!args[1]) {
-      return message.channel.send(
-        `**You did not specify the amount of time you wish to set a timer for!**`
-      );
-    }
-    if (!args[1].endsWith("s")) {
-    if (!args[1].endsWith("d")) {
-      if (!args[1].endsWith("h")) {
-        if (!args[1].endsWith("m")) {
-          return message.channel.send(
-            `**You did not use the proper format for the the time!**`
-          );
-        }
-      }
-    }
-    }
-    if (isNaN(args[1][0])) {
-      return message.channel.send(`**That is not a number!**`);
-    }
-    Timers.set(message.author.id + " G " + message.guild.name, {
-      Guild: message.guild.name,
-      Author: {
-        Tag: message.author.tag,
-        ID: message.author.id,
-      },
-      Time: ms(args[1]),
-    });
-    message.channel.send(
-      `**${message.author.tag} you have set a timer for ${args[1]} (${ms(
-        args[1]
-      )}MS)**`
-    ).then(m =>{
-  setTimeout(() => {
-      m.edit(`**${message.author} Your Timer Has Finished**`)
-    }, ms(args[1]));
-
-    })
-    setTimeout(() => {
-      let Embed = new Discord.MessageEmbed()
-        .setTitle(`Timer finished in guild ${message.guild.name}..`)
-        .setDescription(
-          `**Your timer for ${args[1]} (${ms(args[1])}MS) has finished!**`
-        )
-        .setColor(`GREEN`);
-      message.author.send(Embed);
-      Timers.delete(message.author.id + " G " + message.guild.name);
-    }, ms(args[1]));
-}
 })
 
 
 
-////////
+
+
+
+    
